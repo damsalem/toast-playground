@@ -7,7 +7,6 @@ import {
 	MessageContext,
 	VariantContext,
 } from '../ToastProvider/ToastProvider';
-import useCloseAllToasts from '../../hooks/useCloseAllToasts';
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
@@ -16,8 +15,6 @@ function ToastPlayground() {
 	const { msg, setMsg } = React.useContext(MessageContext);
 	const { variant, setVariant } = React.useContext(VariantContext);
 	const msgRef = React.useRef('');
-
-	useCloseAllToasts(); //handle Esc presses
 
 	return (
 		<div className={styles.wrapper}>

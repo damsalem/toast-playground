@@ -1,4 +1,5 @@
 import React from 'react';
+import useKeyDown from '../../hooks/useKeyDown';
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
@@ -41,13 +42,14 @@ function ToastProvider({ children }) {
 		setToastArr([]);
 	};
 
+	useKeyDown('Escape', handleCloseAllToasts); //handle Esc presses
+
 	return (
 		<ToastContext.Provider
 			value={{
 				toastArr,
 				handleAddToast,
 				handleCloseToast,
-				handleCloseAllToasts,
 			}}
 		>
 			<MessageContext.Provider value={{ msg, setMsg }}>
