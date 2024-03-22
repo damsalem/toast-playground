@@ -2,19 +2,26 @@ import React from 'react';
 import Button from '../Button';
 import styles from './ToastPlayground.module.css';
 import ToastShelf from '../ToastShelf';
-import {
-	ToastContext,
-	MessageContext,
-	VariantContext,
-} from '../ToastProvider/ToastProvider';
+import { ToastContext, MessageContext } from '../ToastProvider/ToastProvider';
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
 	const { handleAddToast } = React.useContext(ToastContext);
 	const { msg, setMsg } = React.useContext(MessageContext);
-	const { variant, setVariant } = React.useContext(VariantContext);
+	const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
 	const msgRef = React.useRef('');
+
+	const createNewToast = (e) => {
+		// Don't refresh on submit
+		e.preventDefault();
+		// Reset form values
+		setMsg('');
+		setVariant(VARIANT_OPTIONS[0]);
+		msgRef.current.focus();
+		// Actually add toast
+		handleAddToast(msg, variant);
+	};
 
 	return (
 		<div className={styles.wrapper}>
@@ -25,10 +32,7 @@ function ToastPlayground() {
 
 			<ToastShelf />
 
-			<form
-				className={styles.controlsWrapper}
-				onSubmit={(e) => handleAddToast(e, msgRef)}
-			>
+			<form className={styles.controlsWrapper} onSubmit={createNewToast}>
 				<div className={styles.row}>
 					<label
 						htmlFor='message'
