@@ -26,7 +26,10 @@ function Toast({ msg = '', variant = 'notice', close = () => {} }) {
 				<Icon size={24} />
 			</div>
 			{msg ? (
-				<p className={styles.content}>{msg}</p>
+				<p className={styles.content}>
+					<VisuallyHidden>{variant} -</VisuallyHidden>
+					{msg}
+				</p>
 			) : (
 				<div className={'VisuallyHidden_wrapper'} error={true}>
 					Something went wrong! Please contact customer support
