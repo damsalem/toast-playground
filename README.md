@@ -273,7 +273,7 @@ There are lots of different ways to tackle this, and there's no right or wrong a
 
 ```js
 useEscapeKey(() => {
-  // Code to dismiss all toasts
+	// Code to dismiss all toasts
 });
 ```
 
@@ -286,4 +286,3 @@ useEscapeKey(() => {
 - The `ToastProvider` component should use this new hook.
 - **Make sure there are no ESLint warnings.**
   - In VSCode, ESLint warnings are shown as squiggly yellow underlines. You can view the warning by hovering over the underlined characters, or by opening the “Problems” tab (`⌘` + `Shift` + `M`, or Ctrl + `Shift` + `M`).
-# toast-playground
